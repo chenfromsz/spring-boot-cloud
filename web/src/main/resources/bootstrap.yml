@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: web
+  profiles:
+    active: development
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+encrypt:
+  failOnError: false
