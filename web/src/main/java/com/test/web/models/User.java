@@ -16,6 +16,9 @@ public class User {
     List<Owner> owners = new ArrayList<>();
     Belong belong;
 
+    private String unit;
+    private List<String> roles;
+
     public User() {
     }
 
@@ -73,5 +76,21 @@ public class User {
 
     public void setBelong(Belong belong) {
         this.belong = belong;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 }

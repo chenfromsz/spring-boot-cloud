@@ -1,4 +1,4 @@
-package com.test.web.clients;
+package com.test.web.service;
 
 
 import com.test.web.models.User;
@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
 @FeignClient("data")
 public interface UserClient {
 
@@ -19,10 +17,7 @@ public interface UserClient {
     PagedResources<User> findAll();
 
     @RequestMapping(method = RequestMethod.GET, value = "/users/{id}")
-    List<User> findById(@RequestParam("id") String id);
-
-    @RequestMapping(method = RequestMethod.GET, value = "/users/search/findByName?name={name}")
-    User findByName(@RequestParam("name") String name);
+    User findById(@RequestParam("id") Long id);
 
     @RequestMapping(method = RequestMethod.POST, value = "/users",
             consumes = MediaType.APPLICATION_JSON_VALUE,

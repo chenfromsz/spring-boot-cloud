@@ -6,6 +6,10 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+  rabbitmq:
+      addresses: amqp://192.168.1.214:5672
+      username: alan
+      password: alan
 
 encrypt:
   failOnError: false

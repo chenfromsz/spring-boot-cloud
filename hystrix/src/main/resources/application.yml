@@ -1,3 +1,13 @@
 server:
   port: 7979
 
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG

@@ -16,3 +16,9 @@ spring:
       server:
         git:
           uri: https://github.com/chenfromsz/spring-cloud-config-repo
+  rabbitmq:
+      #addresses: amqp://192.168.1.214:5672
+      addresses: ${vcap.services.${PREFIX:}rabbitmq.credentials.uri:amqp://${RABBITMQ_HOST:192.168.1.214}:${RABBITMQ_PORT:5672}}
+      username: alan
+      password: alan
+

@@ -1,15 +1,10 @@
 package com.test.web.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import com.test.web.models.User;
+import com.test.web.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
@@ -18,22 +13,35 @@ public class UserService {
 	 @Autowired	 
 	 RestTemplate restTemplate;
 	 
-	 //@HystrixCommand(fallbackMethod = "fallbackSearchAll")
-	 public List<User> searchAll() {
-//		 List<User> users = restTemplate.getForObject("http://data/users", List.class);
+	 @HystrixCommand(fallbackMethod = "getUserFallback")
+	 public User getUserByName(String name) {
 		 Map<String, Object> params = new HashMap<>();
-		 params.put("name", "user");
+		 params.put("name", name);
 		 User user = restTemplate.getForObject("http://data/users/search/findByName?name={name}", User.class, params);
-		 List<User> users = new ArrayList<>();
-		 users.add(user);
-		 return users;
-	 }	 
-	 private List<User> fallbackSearchAll() {
-		 System.out.println("HystrixCommand fallbackMethod handle!");
-		 List<User> ls = new ArrayList<User>();
+
+		 return user;
+	 }
+
+	 private User getUserFallback(String name) {
 		 User user = new User();
-		 user.setName("one name");
-		 ls.add(user);
-		 return ls;
+		 user.setName(name + " not find");
+		 user.setEmail("user email");
+
+		 Belong belong = new Belong();
+		 Unit unit = new Unit();
+		 unit.setName("unit name");
+		 belong.setUnit(unit);
+		 user.setBelong(belong);
+
+		 Owner owner = new Owner();
+		 Role role = new Role();
+		 role.setName("role name");
+		 owner.setRole(role);
+
+		 List<Owner> owners = new ArrayList<>();
+		 owners.add(owner);
+		 user.setOwners(owners);
+
+		 return user;
 	 }
 }

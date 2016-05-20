@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @SpringBootApplication
 @Controller
 @EnableHystrixDashboard
-public class HystrixApplication {
+public class HystrixApplication{
     @RequestMapping("/")
     public String home() {
         return "forward:/hystrix";
@@ -18,5 +18,4 @@ public class HystrixApplication {
     public static void main(String[] args) {
         SpringApplication.run(HystrixApplication.class, args);
     }
-
 }

@@ -21,7 +21,6 @@ public class Neo4jConfig extends Neo4jConfiguration {
     @Override
     public Neo4jServer neo4jServer() {
         return new RemoteServer(neo4jSetting.getUrl(), neo4jSetting.getUsername(), neo4jSetting.getPassword());
-        //return new RemoteServer("http://192.168.1.221:7474","neo4j","12345678");
     }
 
     @Override

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div th:fragment="nav">
+
+    <div class="columnLeftMenu">
+
+        <h6 ><span class="f-right"></span>系统管理</h6>
+        <ul >
+            <li><a th:classappend="${page == 'user/index' ? 'currentPageNav' : ''}" th:href="@{/user/index}">用户信息</a></li>
+        </ul>
+
+    </div>
+</div>
+</body>
+</html>

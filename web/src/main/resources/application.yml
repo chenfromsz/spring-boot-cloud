@@ -1,5 +1,5 @@
 server:
-  port: 9006
+  port: 9001
 
 eureka:
   client:
@@ -11,3 +11,4 @@ eureka:
 ribbon:
   eureka:
     enabled: true
+

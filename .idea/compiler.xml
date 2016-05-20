@@ -30,6 +30,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bus" target="1.8" />
       <module name="config" target="1.8" />
       <module name="data" target="1.8" />
       <module name="discovery" target="1.8" />

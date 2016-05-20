@@ -42,7 +42,7 @@ public class UserTest {
     @Autowired
     UserService userService;
 
-    //@Test
+    @Test
     public void initData() {
         userRepository.deleteAll();
         roleRepository.deleteAll();
@@ -62,6 +62,13 @@ public class UserTest {
         roleRepository.save(role);
         Assert.notNull(role.getId());
 
+        Role role1 = new Role();
+        role1.setName("manage");
+        role1.setCreate(new Date());
+
+        roleRepository.save(role1);
+        Assert.notNull(role1.getId());
+
         User user = new User();
         user.setName("user");
         user.setSex(1);
@@ -69,7 +76,9 @@ public class UserTest {
         user.setCreate(new Date());
 
         user.beBelong(unit,"安排");
+
         user.addOwner(role, "分配");
+        user.addOwner(role1, "分配");
 
         userRepository.save(user);
         Assert.notNull(user.getId());
@@ -82,10 +91,7 @@ public class UserTest {
         UserQo userQo = new UserQo();
         userQo.setName("user");
         userQo.setCreateStart(new SimpleDateFormat("yyyy-MM-dd").parse("2016-04-29"));
-        userQo.setCreateEnd(new SimpleDateFormat("yyyy-MM-dd").parse("2016-05-30"));
-        logger.info("======="+userQo.getCreateStart().getTime());
-        logger.info("======="+userQo.getCreateEnd().getTime());
-
+        //userQo.setCreateEnd(new SimpleDateFormat("yyyy-MM-dd").parse("2016-05-30"));
 
         Page<User> users = userService.findPage(userQo);
         Assert.notNull(users);
