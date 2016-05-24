@@ -9,6 +9,7 @@ import com.test.data.repositories.UnitRepository;
 import com.test.data.repositories.UserRepository;
 import com.test.data.services.PagesService;
 import com.test.data.services.UserService;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,8 +29,8 @@ import java.util.Date;
 /**
  * Created by Alan on 2016/3/28.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Neo4jConfig.class, PagesService.class, UserService.class})
+@RunWith(SpringJUnit4ClassRunner.class)
 public class UserTest {
     private static Logger logger = LoggerFactory.getLogger(UserTest.class);
 
