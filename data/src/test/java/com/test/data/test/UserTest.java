@@ -91,8 +91,7 @@ public class UserTest {
 
         UserQo userQo = new UserQo();
         userQo.setName("user");
-        userQo.setCreateStart(new SimpleDateFormat("yyyy-MM-dd").parse("2016-04-29"));
-        //userQo.setCreateEnd(new SimpleDateFormat("yyyy-MM-dd").parse("2016-05-30"));
+        userQo.setCreate(new SimpleDateFormat("yyyy-MM-dd").parse("2016-04-29"));
 
         Page<User> users = userService.findPage(userQo);
         Assert.notNull(users);

@@ -51,18 +51,12 @@ public class UserService {
             Filter filter = new Filter("name", userQo.getName());
             filters.add(filter);
         }
-        if (!StringUtils.isEmpty(userQo.getCreateStart())) {
-            Filter filter = new Filter("create", userQo.getCreateStart());
+        if (!StringUtils.isEmpty(userQo.getCreate())) {
+            Filter filter = new Filter("create", userQo.getCreate());
             filter.setComparisonOperator(ComparisonOperator.GREATER_THAN);
             filter.setBooleanOperator(BooleanOperator.AND);
             filters.add(filter);
         }
-//        if (!StringUtils.isEmpty(userQo.getCreateEnd())) {
-//            Filter filter = new Filter("create", userQo.getCreateEnd());
-//            filter.setComparisonOperator(ComparisonOperator.LESS_THAN);
-//            filter.setBooleanOperator(BooleanOperator.AND);
-//            filters.add(filter);
-//        }
 
         return userPagesService.findAll(User.class, pageable, filters);
     }
