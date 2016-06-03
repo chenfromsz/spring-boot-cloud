@@ -1,0 +1,28 @@
+hystrix:
+  image: hystrix
+  ports:
+   - "7979:7979"
+  links:
+   - discovery
+discovery:
+  image: discovery
+  ports:
+   - "8761:8761"
+config:
+  image: config
+  ports:
+   - "8888:8888"
+  links:
+   - discovery
+data:
+  image: data
+  links:
+   - discovery
+   - config
+web:
+  image: web
+  ports:
+     - "9001:9001"
+  links:
+   - discovery
+   - config

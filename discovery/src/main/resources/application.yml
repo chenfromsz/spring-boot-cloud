@@ -8,6 +8,6 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://localhost:${server.port}/eureka/
+      defaultZone: http://192.168.1.221:${server.port}/eureka/
 
 spring.cloud.config.discovery.enabled: true

@@ -43,7 +43,7 @@ public class UserTest {
     @Autowired
     UserService userService;
 
-    @Test
+    //@Test
     public void initData() {
         userRepository.deleteAll();
         roleRepository.deleteAll();
