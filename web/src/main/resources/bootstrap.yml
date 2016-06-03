@@ -5,9 +5,9 @@ spring:
     active: development
   cloud:
     config:
-      uri: http://192.168.1.221:8888
+      uri: http://localhost:8888
   rabbitmq:
-      addresses: amqp://192.168.1.214:5672
+      addresses: amqp://192.168.1.215:5672
       username: alan
       password: alan
 
