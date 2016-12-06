@@ -1,5 +1,6 @@
 package com.test.data.test;
 
+import com.test.data.config.Neo4jConfig;
 import com.test.data.domain.Role;
 import com.test.data.domain.Unit;
 import com.test.data.domain.User;
@@ -10,6 +11,7 @@ import com.test.data.repositories.UserRepository;
 import com.test.data.services.PagesService;
 import com.test.data.services.UserService;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,9 +28,6 @@ import org.springframework.util.Assert;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Alan on 2016/3/28.
- */
 @ContextConfiguration(classes = {Neo4jConfig.class, PagesService.class, UserService.class})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserTest {
@@ -43,7 +42,7 @@ public class UserTest {
     @Autowired
     UserService userService;
 
-    //@Test
+    @Before
     public void initData() {
         userRepository.deleteAll();
         roleRepository.deleteAll();
@@ -53,22 +52,13 @@ public class UserTest {
         unit.setName("开发部");
         unit.setCreate(new Date());
 
-        unitRepository.save(unit);
-        Assert.notNull(unit.getId());
-
         Role role = new Role();
         role.setName("admin");
         role.setCreate(new Date());
 
-        roleRepository.save(role);
-        Assert.notNull(role.getId());
-
         Role role1 = new Role();
         role1.setName("manage");
         role1.setCreate(new Date());
-
-        roleRepository.save(role1);
-        Assert.notNull(role1.getId());
 
         User user = new User();
         user.setName("user");

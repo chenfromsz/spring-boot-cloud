@@ -1,7 +1,6 @@
 package com.test.data.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.voodoodyne.jackson.jsog.JSOGGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@JsonIdentityInfo(generator=JSOGGenerator.class)
 @NodeEntity
 public class User {
     @GraphId
@@ -24,9 +22,11 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date create;
 
+    @JsonIgnore
     @Relationship(type="拥有")
     List<Owner> owners = new ArrayList<>();
 
+    @JsonIgnore
     @Relationship(type = "隶属", direction = Relationship.INCOMING)
     Belong belong;
 
