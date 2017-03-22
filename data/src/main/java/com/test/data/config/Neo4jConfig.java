@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableNeo4jRepositories(basePackages = { "com.test.data.repositories" })
-@EnableConfigurationProperties(Neo4jSetting.class)
+//@EnableConfigurationProperties(Neo4jSetting.class)
 public class Neo4jConfig extends Neo4jConfiguration {
 //SDN 升级到4.1.2，连接服务器的配置改在ogm.properties中设定，这样可以访问Neo4j 2.x 到 3.x 版本
 //    @Autowired
