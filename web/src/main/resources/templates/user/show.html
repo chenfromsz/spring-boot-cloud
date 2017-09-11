@@ -10,7 +10,7 @@
         <tr>
             <th>部门</th>
             <td width="240">
-                <input class="inp-list w-200 clear-mr f-left" type="text" th:value="${user.belong.unit.name}" readonly="true"/>
+                <input class="inp-list w-200 clear-mr f-left" type="text" th:if="${user.belong !=null}" th:value="${user.belong.unit.name}" readonly="true"/>
             </td>
             <th>性别</th>
             <td>
