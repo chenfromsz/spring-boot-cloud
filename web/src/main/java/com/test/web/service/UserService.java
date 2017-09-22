@@ -18,7 +18,7 @@ public class UserService {
 	 public User getUserByName(String name) {
 		 Map<String, Object> params = new HashMap<>();
 		 params.put("name", name);
-		 User user = restTemplate.getForObject("http://data/users/search/findByName?name={name}", User.class, params);
+		 User user = restTemplate.getForObject("http://data/user/findByName?name={name}", User.class, params);
 
 		 return user;
 	 }

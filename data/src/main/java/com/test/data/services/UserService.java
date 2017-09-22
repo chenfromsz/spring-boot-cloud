@@ -15,6 +15,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.Collection;
+
 @Service
 public class UserService {
     @Autowired
@@ -37,6 +39,10 @@ public class UserService {
     public void delete(Long id) {
         User user = userRepository.findOne(id);
         userRepository.delete(user);
+    }
+
+    public Collection<User> findByNameContaining(String userName){
+        return userRepository.findByNameContaining(userName);
     }
 
     public User findByName(String username){

@@ -8,9 +8,9 @@ $(function () {
 });
 
 var pageaction = function(){
-    $.get('/data/users/search/findByNameContaining?name='+$("#name").val(),
+    $.get('/data/user/findByNameContaining?name='+$("#name").val(),
         function(data){
-        var currentData = data["_embedded"].users;
+        var currentData = data;
         fillData(currentData);
     });
 
